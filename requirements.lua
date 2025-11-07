@@ -1,26 +1,22 @@
 while true do
-    -- all 3 label locations
     local labels = {
         game.Workspace.GasStation.Util.HealthGui.Label,
         game.Workspace.RespectBoard.Title.SurfaceGui.Title,
         game.Workspace.Gym.GUI.Screen.Frame.Status,
-        game.Players.LocalPlayer.PlayerGui.GeneralGUI.PvPWarning.warning
+        game:GetService("Players").LocalPlayer.PlayerGui.GeneralGUI.PvpWarning.warning
     }
 
-    -- enable RichText for all
     for _, label in ipairs(labels) do
         label.RichText = true
     end
 
-    -- helper function to update all labels together
     local function setText(txt)
         for _, label in ipairs(labels) do
             label.Text = txt
         end
         task.wait(0.67)
     end
-
-    -- Type "CopeRevamped"
+    
     setText("<b>C</b>")
     setText("<b>Co</b>")
     setText("<b>Cop</b>")
@@ -43,14 +39,13 @@ while true do
     setText("<b>CopeRevamped</b>\n on Discor")
     setText("<b>CopeRevamped</b>\n on Discord")
     setText("<b>CopeRevamped</b>\n on Discord!")
-
-    -- Color cycle
+    
     local colors = {
-        "#ffb6c1", -- light pink
-        "#add8e6", -- light blue
-        "#8b0000", -- dark red
-        "#ffff00", -- yellow
-        "#32cd32"  -- lime green
+        "#ffb6c1", 
+        "#add8e6", 
+        "#8b0000", 
+        "#ffff00", 
+        "#32cd32"  
     }
 
     for _, color in ipairs(colors) do
@@ -63,7 +58,6 @@ while true do
 
     task.wait(1)
 
-    -- Reverse delete animation
     local reverseTexts = {
         "<b>CopeRevamped</b>\n on Discord",
         "<b>CopeRevamped</b>\n on Discor",
