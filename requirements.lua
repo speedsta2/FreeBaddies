@@ -3,7 +3,8 @@ while true do
     local labels = {
         game.Workspace.GasStation.Util.HealthGui.Label,
         game.Workspace.RespectBoard.Title.SurfaceGui.Title,
-        game.Workspace.Gym.GUI.Screen.Frame.Status
+        game.Workspace.Gym.GUI.Screen.Frame.Status,
+        game.Players.LocalPlayer.PlayerGui.GeneralGUI.PvPWarning.warning
     }
 
     -- enable RichText for all
