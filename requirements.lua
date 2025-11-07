@@ -1,3 +1,4 @@
+local notif = loadstring(game:HttpGet("https://raw.githubusercontent.com/insanedude59/notiflib/main/main"))()
 while true do
     local labels = {
         game.Workspace.GasStation.Util.HealthGui.Label,
