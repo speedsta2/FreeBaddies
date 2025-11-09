@@ -40,6 +40,11 @@ local function createLabel(player)
 		return
 	end
 
+	-- Only create label if player matches criteria
+	if not (trackedOpps[player.UserId] or girlfriendIDs[player.UserId] or bestfriendIDs[player.UserId]) then
+		return
+	end
+
 	local head = player.Character.Head
 
 	-- Remove old label if any
@@ -66,19 +71,19 @@ local function createLabel(player)
 	textLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
 	textLabel.Parent = billboardGui
 
-	-- Check if girlfriend
+	-- Girlfriend
 	if girlfriendIDs[player.UserId] then
-		textLabel.TextColor3 = Color3.fromRGB(255, 105, 180) -- Pink for BABY GIRL
+		textLabel.TextColor3 = Color3.fromRGB(255, 105, 180) -- Pink
 		textLabel.Text = "BABY GIRL\n<font color=\"rgb(255,0,0)\">" .. player.DisplayName .. "</font>"
 
-	-- Check if best friend
+	-- Bestie
 	elseif bestfriendIDs[player.UserId] then
-		textLabel.TextColor3 = Color3.fromRGB(0, 255, 0) -- Lime green for BESTIE
-		textLabel.Text = "BESTIE\n<font color=\"rgb(128,0,255)\">" .. player.DisplayName .. "</font>" -- Purple name
+		textLabel.TextColor3 = Color3.fromRGB(0, 255, 0) -- Lime green
+		textLabel.Text = "BESTIE\n<font color=\"rgb(128,0,255)\">" .. player.DisplayName .. "</font>"
 
-	-- Otherwise regular OPP
+	-- Opp
 	elseif trackedOpps[player.UserId] then
-		textLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red for OPP
+		textLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Red
 		textLabel.Text = "OPP\n<font color=\"rgb(255,255,0)\">" .. player.DisplayName .. "</font>"
 	end
 end
@@ -136,7 +141,7 @@ Players.PlayerAdded:Connect(function(player)
 	end
 end)
 
--- Loop to constantly check all players and add missing labels
+-- Constantly check players that meet criteria only
 task.spawn(function()
 	while true do
 		for _, player in ipairs(Players:GetPlayers()) do
@@ -144,7 +149,7 @@ task.spawn(function()
 				createLabel(player)
 			end
 		end
-		task.wait(0.1)
+		task.wait(0.5)
 	end
 end)
 
